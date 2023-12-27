@@ -1,7 +1,13 @@
-export default function SearchBar() {
-  const searchTerm = '';
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchTerm, selectSearchTerm } from "../search.slice";
 
-  function handleChange({ target: { value } }) {}
+export default function SearchBar() {
+  const searchTerm = useSelector(selectSearchTerm);
+  const dispatch = useDispatch();
+
+  function handleChange({ target: { value } }) {
+    dispatch(setSearchTerm(value));
+  }
 
   return (
     <form>
